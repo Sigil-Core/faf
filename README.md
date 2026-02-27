@@ -2,92 +2,15 @@
 
 *A legal-to-technical bridge that wraps autonomous AI agents in LLC structures enforced by deterministic Intent Attestations.*
 
----
-
-## The Liability Void
-
-AI agents do not possess legal personhood.
-
-As a result, the human founder, General Partner (GP), or corporate officer carries **100% of the fiduciary liability** for any action executed by an autonomous system.
-
-If an agent:
-
-- Hallucinates  
-- Is prompt-injected  
-- Violates regulatory constraints  
-- Exceeds treasury mandates  
-- Leaks credentials  
-
-…the human founder is legally exposed.
-
-The **Fiduciary Agent Framework (FAF)** closes this liability gap by combining:
-
-- Legal entity structuring  
-- Deterministic policy enforcement  
-- Cryptographic Intent Attestations  
-- Credential sequestration  
-
-FAF transforms autonomous agents from uncontrolled liabilities into structurally governed fiduciary systems.
-
----
-
-## The Doctrine of Structural Trust
-
-Under FAF:
-
-> Safety is not a property of prompts.  
-> Safety is a property of architecture.
-
-An AI agent is explicitly barred from:
-
-- Holding private keys  
-- Possessing raw API credentials  
-- Executing transactions directly  
-- Routing network traffic without deterministic checks  
-
-All high-stakes actions must route through **Sigil Sign** and be evaluated against a deterministic `ASSURANCE.md` policy.
-
-Execution only proceeds if the action carries a valid **Intent Attestation**.
-
----
-
-## How FAF Works
-
-### 1. The Legal Wrapper
-
-The human founder establishes a legal entity (e.g., Wyoming DAO LLC) using open-source templates provided in this repository.
-
-The operating agreement explicitly defines:
-
-- The scope of autonomous authority  
-- Spend limits  
-- Risk tolerance  
-- Compliance requirements  
-
----
-
-### 2. The `ASSURANCE.md` Policy Layer
-
-The GP translates legal constraints into deterministic, machine-readable rules inside `ASSURANCE.md`.
-
-Example:
-
-```md
-# ASSURANCE.md
-
-- Do not invest more than 5 ETH per token.
-- Only transact on allowlisted chainIds.
-- Never execute transactions to non-whitelisted addresses.
-- Require human approval for transfers > 10 ETH.
-# Fiduciary Agent Framework (FAF)
-
-*A legal-to-technical bridge that wraps autonomous AI agents in LLC structures enforced by deterministic Intent Attestations.*
+[![Status](https://img.shields.io/badge/status-active--development-black)](#)
+[![License](https://img.shields.io/badge/license-MIT-blue)](#)
+[![Security](https://img.shields.io/badge/security-Deterministic--Governance-green)](#)
 
 ---
 
 ## Executive Summary
 
-The **Fiduciary Agent Framework (FAF)** is an open-source governance standard that allows human founders, General Partners (GPs), and enterprises to deploy autonomous AI agents without assuming unlimited personal liability.
+The **Fiduciary Agent Framework (FAF)** is an open-source governance standard that allows founders, General Partners (GPs), DAOs, and enterprises to deploy autonomous AI agents without assuming unlimited personal liability.
 
 FAF converts stochastic AI behavior into structurally bounded fiduciary execution through:
 
@@ -95,6 +18,8 @@ FAF converts stochastic AI behavior into structurally bounded fiduciary executio
 - Deterministic policy enforcement (`ASSURANCE.md`)  
 - Cryptographically signed **Intent Attestations**  
 - Credential sequestration via Sigil infrastructure  
+
+FAF ensures that compliance is enforced *before execution*, not after loss.
 
 ---
 
@@ -113,7 +38,7 @@ If an agent:
 - Leaks credentials  
 - Executes unauthorized transactions  
 
-…the human founder is legally exposed.
+…the human operator is legally exposed.
 
 FAF closes this liability gap by making compliance a property of system architecture — not a hope about agent alignment.
 
@@ -126,14 +51,14 @@ FAF closes this liability gap by making compliance a property of system architec
 
 Under FAF:
 
-- AI agents **never hold private keys**
-- AI agents **never see raw API credentials**
-- AI agents **cannot execute without deterministic authorization**
-- High-stakes actions must pass through a policy enforcement layer
+- AI agents **never hold private keys**  
+- AI agents **never see raw API credentials**  
+- AI agents **cannot execute without deterministic authorization**  
+- High-stakes actions must route through a policy enforcement layer  
 
-All execution routes through **Sigil Sign**, which evaluates actions against a deterministic `ASSURANCE.md` policy and returns a short-lived, Ed25519-signed **Intent Attestation**.
+All execution routes through **[Sigil Sign](https://sign.sigilcore.com)** and is evaluated against a deterministic `ASSURANCE.md` policy.
 
-Execution only proceeds if that attestation is valid.
+Execution only proceeds if the action carries a valid **Intent Attestation**.
 
 ---
 
@@ -177,7 +102,7 @@ This file becomes the enforceable contract between the agent and the execution l
 
 ### 3. Deterministic Interception
 
-The agent’s runtime must route high-stakes actions through Sigil:
+The agent’s runtime must route high-stakes actions through Sigil infrastructure:
 
 - Wallet transfers  
 - Smart contract writes  
@@ -196,11 +121,11 @@ If the proposed action complies with `ASSURANCE.md`, Sigil Sign returns a short-
 
 The attestation:
 
-- Binds to a specific `chainId`
-- Binds to a specific `txCommit` (EOA) or `userOpHash` (ERC-4337)
-- Expires in ≤ 60 seconds
-- Uses issuer `sigil-core`
-- Uses audience `sigil-sign`
+- Binds to a specific `chainId`  
+- Binds to a specific `txCommit` (EOA) or `userOpHash` (ERC-4337)  
+- Expires in ≤ 60 seconds  
+- Uses issuer `sigil-core`  
+- Uses audience `sigil-sign`  
 
 If denied, Sigil returns a deterministic JSON Rebound:
 
@@ -213,7 +138,7 @@ If denied, Sigil returns a deterministic JSON Rebound:
 }
 ```
 
-This guarantees compliance **before execution**, not after loss.
+This guarantees compliance **before execution**, not after capital moves.
 
 ---
 
@@ -228,6 +153,22 @@ Under FAF:
 - Every denied action is deterministically blocked.
 
 FAF transforms autonomous agents into governed fiduciary instruments.
+
+---
+
+## Security Model
+
+FAF operates under a **deny-by-default execution model**.
+
+Core principles:
+
+- No private keys reside inside AI model context.
+- No raw API credentials are exposed to agent reasoning layers.
+- All high-stakes actions require deterministic pre-execution authorization.
+- Authorization decisions are cryptographically signed and time-bound.
+- Policy enforcement occurs *before* on-chain execution.
+
+FAF assumes that language models are probabilistic and potentially adversarially influenced. Therefore, governance enforcement is externalized into deterministic infrastructure rather than embedded in prompts.
 
 ---
 
@@ -266,26 +207,28 @@ FAF transforms autonomous agents into governed fiduciary instruments.
 
 FAF operates within the broader Sigil governance architecture:
 
-- **Sigil Sign** → Deterministic execution firewall (Intent Attestation issuance)  
+- **Sigil Sign** → Deterministic execution firewall  
 - **Sigil Vault** → Just-in-time credential sequestration  
 - **Sigil Sentry** → Policy enforcement engine  
 - **Sigil Anchor** → Hardware execution residency (future phase)  
 - **Sigil Receipts** → Canonical Intent Attestation specification  
 
-Together, these components form the deterministic governance layer for the machine economy.
+---
+
+### Cross‑Repository Architecture
+
+FAF is designed to integrate directly with:
+
+- **[Open Venture Engine (OVE)](https://github.com/sigil-core/ove)** — Agentic VC boilerplate secured by Intent Attestation enforcement.
+
+OVE demonstrates a practical implementation of FAF in a live autonomous capital deployment context.
+
+Developers building with OVE inherit the governance guarantees defined in FAF.
 
 ---
 
-## The Core Proposition
+## Documentation
 
-FAF does not rely on:
+Full technical documentation and integration guides are coming soon.
 
-- AI alignment promises  
-- Software-only guardrails  
-- Post-mortem blockchain logging  
-
-FAF enforces compliance **before execution** through deterministic cryptographic proof.
-
-Human liability becomes structurally bounded.
-
-Autonomous agents become governable fiduciary instruments.
+→ **https://docs.sigilcore.com**
