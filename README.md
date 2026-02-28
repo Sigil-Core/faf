@@ -6,6 +6,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](#)
 [![Security](https://img.shields.io/badge/security-Deterministic--Governance-green)](#)
 
+[![Spec Version](https://img.shields.io/badge/spec-v0.x-blue)](#)
+
 ---
 
 ## Executive Summary
@@ -172,6 +174,22 @@ FAF assumes that language models are probabilistic and potentially adversarially
 
 ---
 
+## Threat Model Summary
+
+| Threat Vector | Risk | Mitigation via FAF Architecture |
+|--------------|------|----------------------------------|
+| Prompt Injection | Agent executes unintended or malicious action | Deterministic pre-execution authorization via Sigil Sign |
+| Treasury Drain | Excess capital deployment beyond mandate | `ASSURANCE.md` enforced spend limits |
+| Privilege Escalation | Agent exceeds defined authority | Deny-by-default policy enforcement |
+| Secret Exfiltration | API keys or private keys exposed to agent | Credential sequestration via Sigil Vault |
+| Infrastructure Mutation | Unauthorized infra or credential changes | Mandatory interception of high-stakes actions |
+| Replay / Reuse | Reuse of prior authorization | Short-lived, commit-bound Intent Attestations |
+
+FAF assumes that models may hallucinate or be adversarially influenced. Therefore, enforcement is externalized into deterministic infrastructure rather than trusting internal alignment.
+
+---
+---
+
 ## Repository Structure
 
 ```
@@ -209,9 +227,9 @@ FAF operates within the broader Sigil governance architecture:
 
 - **Sigil Sign** → Deterministic execution firewall  
 - **Sigil Vault** → Just-in-time credential sequestration  
-- **Sigil Sentry** → Policy enforcement engine  
+- **Sigil Sentry** → Mobile human-in-the-loop approval & monitoring interface (iOS / Android)  
 - **Sigil Anchor** → Hardware execution residency (future phase)  
-- **Sigil Receipts** → Canonical Intent Attestation specification  
+- **sigil-attestations** → Canonical Intent Attestation specification (Ed25519 JWT standard)  
 
 ---
 
