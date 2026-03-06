@@ -1,6 +1,6 @@
 # Fiduciary Agent Framework (FAF)
 
-*A legal-to-technical bridge that wraps autonomous AI agents in LLC structures enforced by deterministic Intent Attestations.*
+_A legal-to-technical bridge that wraps autonomous AI agents in LLC structures enforced by deterministic Intent Attestations._
 
 [![Status](https://img.shields.io/badge/status-active--development-black)](#)
 [![License](https://img.shields.io/badge/license-MIT-blue)](#)
@@ -11,16 +11,16 @@
 
 ## Executive Summary
 
-The **Fiduciary Agent Framework (FAF)** is an open-source governance standard that allows founders, General Partners (GPs), DAOs, and enterprises to deploy autonomous AI agents without assuming unlimited personal liability.
+The **Fiduciary Agent Framework (FAF)** is an open-source governance standard that allows founders, General Partners (GPs), DAOs, and enterprises to deploy autonomous AI agents **without assuming unlimited personal liability**.
 
 FAF converts stochastic AI behavior into structurally bounded fiduciary execution through:
 
-- Legal entity wrapping  
-- Deterministic policy enforcement (`ASSURANCE.md`)  
-- Cryptographically signed **Intent Attestations**  
-- Credential sequestration via Sigil infrastructure  
+- Legal entity wrapping
+- Deterministic policy enforcement (`ASSURANCE.md`)
+- Cryptographically signed **Intent Attestations**
+- Credential sequestration
 
-FAF ensures that compliance is enforced *before execution*, not after loss.
+FAF ensures that compliance is enforced **before execution**, not after loss.
 
 ---
 
@@ -32,32 +32,30 @@ As a result, the human founder, GP, or corporate officer carries **100% of the f
 
 If an agent:
 
-- Hallucinates  
-- Is prompt-injected  
-- Violates regulatory constraints  
-- Exceeds treasury mandates  
-- Leaks credentials  
-- Executes unauthorized transactions  
+- hallucinates
+- is prompt-injected
+- violates regulatory constraints
+- exceeds treasury mandates
+- leaks credentials
+- executes unauthorized transactions
 
 …the human operator is legally exposed.
 
-FAF closes this liability gap by making compliance a property of system architecture — not a hope about agent alignment.
+FAF closes this liability gap by making compliance a property of **system architecture**, not a hope about agent alignment.
 
 ---
 
 ## The Doctrine of Structural Trust
 
-> Safety is not a property of prompts.  
-> Safety is a property of architecture.
+Safety is not a property of prompts.
+Safety is a property of architecture.
 
 Under FAF:
 
-- AI agents **never hold private keys**  
-- AI agents **never see raw API credentials**  
-- AI agents **cannot execute without deterministic authorization**  
-- High-stakes actions must route through a policy enforcement layer  
-
-All execution routes through **[Sigil Sign](https://sign.sigilcore.com)** and is evaluated against a deterministic `ASSURANCE.md` policy.
+- AI agents **never hold private keys**
+- AI agents **never see raw API credentials**
+- AI agents **cannot execute without deterministic authorization**
+- High-stakes actions must route through a policy enforcement layer
 
 Execution only proceeds if the action carries a valid **Intent Attestation**.
 
@@ -67,27 +65,27 @@ Execution only proceeds if the action carries a valid **Intent Attestation**.
 
 ### 1. The Legal Wrapper
 
-The human founder establishes a legal entity (e.g., Wyoming DAO LLC) using open-source templates provided in this repository.
+The human founder establishes a legal entity (for example, a Wyoming DAO LLC) using templates provided in this repository.
 
 The operating agreement defines:
 
-- Scope of autonomous authority  
-- Spend limits  
-- Risk tolerance  
-- Compliance requirements  
-- Human override conditions  
+- scope of autonomous authority
+- spend limits
+- risk tolerance
+- compliance requirements
+- human override conditions
 
-This document establishes fiduciary boundaries.
+This document establishes the fiduciary boundaries for the agent.
 
 ---
 
 ### 2. The `ASSURANCE.md` Policy Layer
 
-The GP translates legal constraints into deterministic, machine-readable rules inside `ASSURANCE.md`.
+Legal constraints are translated into deterministic, machine-readable rules in `ASSURANCE.md`.
 
 Example:
 
-```md
+```markdown
 # ASSURANCE.md
 
 - Do not invest more than 5 ETH per token.
@@ -103,14 +101,16 @@ This file becomes the enforceable contract between the agent and the execution l
 
 ### 3. Deterministic Interception
 
-The agent’s runtime must route high-stakes actions through Sigil infrastructure:
+The agent runtime must route high-stakes actions through the enforcement layer.
 
-- Wallet transfers  
-- Smart contract writes  
-- ERC-4337 UserOperations  
-- Treasury deployments  
-- Credential injection requests  
-- Infrastructure mutations  
+Examples include:
+
+- wallet transfers
+- smart contract writes
+- ERC-4337 UserOperations
+- treasury deployments
+- credential injection requests
+- infrastructure mutations
 
 Direct execution is structurally blocked.
 
@@ -118,22 +118,21 @@ Direct execution is structurally blocked.
 
 ### 4. Intent Attestation (Cryptographic Enforcement)
 
-If the proposed action complies with `ASSURANCE.md`, Sigil Sign returns a short-lived, Ed25519-signed **Intent Attestation** (JWT).
+If the proposed action complies with `ASSURANCE.md`, the enforcement layer returns a short-lived **Intent Attestation** (JWT).
 
 The attestation:
 
-- Binds to a specific `chainId`  
-- Binds to a specific `txCommit` (EOA) or `userOpHash` (ERC-4337)  
-- Expires in ≤ 60 seconds  
-- Uses issuer `sigil-core`  
-- Uses audience `sigil-sign`  
+- binds to a specific `chainId`
+- binds to a specific `txCommit` (EOA) or `userOpHash` (ERC-4337)
+- is cryptographically signed using Ed25519
+- expires quickly
 
-If denied, Sigil returns a deterministic JSON Rebound:
+If denied, the system returns a deterministic response:
 
 ```json
 {
   "status": "DENIED",
-  "error_code": "SIGIL_POLICY_VIOLATION_04",
+  "error_code": "SIGIL_POLICY_VIOLATION",
   "message": "Transaction exceeds defined treasury limit.",
   "intent_attestation": null
 }
@@ -147,11 +146,11 @@ This guarantees compliance **before execution**, not after capital moves.
 
 Under FAF:
 
-- Agents cannot drain treasuries via prompt injection.
-- Agents cannot exfiltrate secrets.
-- Agents cannot mutate infrastructure without authorization.
-- Every approved action is cryptographically provable.
-- Every denied action is deterministically blocked.
+- agents cannot drain treasuries via prompt injection
+- agents cannot exfiltrate secrets
+- agents cannot mutate infrastructure without authorization
+- every approved action is cryptographically provable
+- every denied action is deterministically blocked
 
 FAF transforms autonomous agents into governed fiduciary instruments.
 
@@ -163,82 +162,74 @@ FAF operates under a **deny-by-default execution model**.
 
 Core principles:
 
-- No private keys reside inside AI model context.
-- No raw API credentials are exposed to agent reasoning layers.
-- All high-stakes actions require deterministic pre-execution authorization.
-- Authorization decisions are cryptographically signed and time-bound.
-- Policy enforcement occurs *before* on-chain execution.
+- no private keys reside inside AI model context
+- no raw credentials are exposed to agent reasoning layers
+- all high-stakes actions require deterministic pre-execution authorization
+- authorization decisions are cryptographically signed and time-bound
+- policy enforcement occurs **before** on-chain execution
 
-FAF assumes that language models are probabilistic and potentially adversarially influenced. Therefore, governance enforcement is externalized into deterministic infrastructure rather than embedded in prompts.
+FAF assumes language models are probabilistic and potentially adversarially influenced. Governance enforcement is therefore externalized into deterministic infrastructure.
 
 ---
 
 ## Threat Model Summary
 
-| Threat Vector | Risk | Mitigation via FAF Architecture |
-|--------------|------|----------------------------------|
-| Prompt Injection | Agent executes unintended or malicious action | Deterministic pre-execution authorization via Sigil Sign |
-| Treasury Drain | Excess capital deployment beyond mandate | `ASSURANCE.md` enforced spend limits |
-| Privilege Escalation | Agent exceeds defined authority | Deny-by-default policy enforcement |
-| Secret Exfiltration | API keys or private keys exposed to agent | Credential sequestration via Sigil Vault |
-| Infrastructure Mutation | Unauthorized infra or credential changes | Mandatory interception of high-stakes actions |
-| Replay / Reuse | Reuse of prior authorization | Short-lived, commit-bound Intent Attestations |
-
-FAF assumes that models may hallucinate or be adversarially influenced. Therefore, enforcement is externalized into deterministic infrastructure rather than trusting internal alignment.
+| Threat Vector           | Risk                                          | Mitigation via FAF Architecture               |
+| ----------------------- | --------------------------------------------- | --------------------------------------------- |
+| Prompt Injection        | Agent executes unintended or malicious action | Deterministic pre-execution authorization     |
+| Treasury Drain          | Excess capital deployment beyond mandate      | `ASSURANCE.md` enforced spend limits          |
+| Privilege Escalation    | Agent exceeds defined authority               | Deny-by-default enforcement                   |
+| Secret Exfiltration     | API keys or private keys exposed              | Credential sequestration                      |
+| Infrastructure Mutation | Unauthorized infra changes                    | Mandatory interception of high-stakes actions |
+| Replay / Reuse          | Reuse of prior authorization                  | Short-lived commit-bound Intent Attestations  |
 
 ---
+
+## Verification
+
+Intent Attestation signatures are verifiable via Sigil's public JWK set:
+
+https://sign.sigilcore.com/.well-known/jwks.json
+
+Verification rules are defined in the sigil-attestations specification:
+https://github.com/Sigil-Core/sigil-attestations
+
 ---
 
 ## Repository Structure
 
-```
+```text
 /legal-templates
-    Standardized operating agreements (e.g., Wyoming DAO LLC)
+Standardized operating agreements
 
 /policy-templates
-    Boilerplate ASSURANCE.md templates for:
-        - Treasury management
-        - DeFi strategies
-        - Venture deployment
-        - Governance voting
-        - Yield farming
+Boilerplate ASSURANCE.md templates
 
 /examples
-    Sample agent integration flows
+Example agent integration flows
 ```
 
 ---
 
 ## Who FAF Is For
 
-- Agentic Venture Capital funds  
-- Autonomous hedge funds  
-- DAO treasuries  
-- AI-native startups  
-- Enterprise automation teams  
-- Founders deploying autonomous financial agents  
+- agentic venture capital funds
+- autonomous hedge funds
+- DAO treasuries
+- AI-native startups
+- enterprise automation teams
+- founders deploying autonomous financial agents
 
 ---
 
-## Relationship to Sigil Ecosystem
+## Relationship to the Sigil Ecosystem
 
-FAF operates within the broader Sigil governance architecture:
+FAF integrates with the broader Sigil architecture:
 
-- **Sigil Sign** → Deterministic execution firewall  
-- **Sigil Vault** → Just-in-time credential sequestration  
-- **Sigil Sentry** → Mobile human-in-the-loop approval & monitoring interface (iOS / Android)  
-- **Sigil Anchor** → Hardware execution residency (future phase)  
-- **sigil-attestations** → Canonical Intent Attestation specification (Ed25519 JWT standard)  
+- **Sigil Sign** - deterministic execution firewall
+- **sigil-attestations** - canonical Intent Attestation specification (Ed25519 JWT standard)
 
----
-
-### Cross‑Repository Architecture
-
-FAF is designed to integrate directly with:
-
-- **[Open Venture Engine (OVE)](https://github.com/sigil-core/ove)** — Agentic VC boilerplate secured by Intent Attestation enforcement.
-
-OVE demonstrates a practical implementation of FAF in a live autonomous capital deployment context.
+OVE (Open Venture Engine) provides a practical implementation of FAF in an autonomous venture deployment context.
 
 Developers building with OVE inherit the governance guarantees defined in FAF.
 
@@ -246,6 +237,6 @@ Developers building with OVE inherit the governance guarantees defined in FAF.
 
 ## Documentation
 
-Full technical documentation and integration guides are coming soon.
+Documentation and integration guides are available at:
 
-→ **https://docs.sigilcore.com**
+https://docs.sigilcore.com
