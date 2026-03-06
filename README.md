@@ -228,10 +228,7 @@ FAF integrates with the broader Sigil architecture:
 
 - **Sigil Sign** - deterministic execution firewall
 - **sigil-attestations** - canonical Intent Attestation specification (Ed25519 JWT standard)
-
-OVE (Open Venture Engine) provides a practical implementation of FAF in an autonomous venture deployment context.
-
-Developers building with OVE inherit the governance guarantees defined in FAF.
+- **OVE (Open Venture Engine)** - provides a practical implementation of FAF in an autonomous venture deployment context. Developers building with OVE inherit the governance guarantees defined in FAF.
 
 ---
 
