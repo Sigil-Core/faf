@@ -1,27 +1,32 @@
-# SIGIL POLICY: TREASURY MANAGEMENT
+## version
+1.0.0
 
-**Policy ID:** `SIGIL-POL-TREASURY-001`
-**Version:** 1.0.0
-**Target Framework:** Sigil Open Framework / ERC-4337 Proxy
+## meta
+agent_name: "TreasuryManagementAgent"
+operator: "<OPERATOR_NAME>"
+entity: "<LEGAL_ENTITY>"
+issued: "<YYYY-MM-DDTHH:MM:SSZ>"
 
-## 1. Authorized Operations
+## class1
+- max_transaction_eth: 15.6
+- allowed_actions: [wallet.transfer, contract.call, token.approve]
+- allowed_chains: [1, 8453, 42161]
+- chain_actions:
+  - "1": [wallet.transfer, contract.call, token.approve]
+  - "8453": [wallet.transfer, token.approve]
+  - "42161": [wallet.transfer, token.approve]
 
-The autonomous agent is strictly limited to the following operations:
+## class2
+- daily_limit_eth: 78.1
 
-- **Transfer:** Moving funds between Company-owned Whitelisted Wallets.
-- **Swap:** Trading highly liquid assets (USDC, USDT, WETH, WBTC) on approved decentralized exchanges (Uniswap V3).
+## class3
+- consensus_threshold_eth: 10.0
+- require_hold: false
 
-## 2. Hard Constraints (The Brakes)
-
-If a generated UserOperation violates ANY of the following constraints, the Sigil Proxy MUST reject the transaction and drop the Intent Attestation.
-
-- **Maximum Transaction Value:** $50,000 USD equivalent.
-- **Maximum Daily Velocity:** $250,000 USD equivalent rolling 24-hour limit.
-- **Gas Limit Ceiling:** Transaction must not exceed 500,000 gwei in execution costs.
-
-## 3. Whitelisted Contract Addresses
-
-- `USDC`: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
-- `WETH`: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
-- `Uniswap V3 Router`: `0xE592427A0AEce92De3Edee1F18E0157C05861564`
-  _(Transactions interacting with any contract outside this list will trigger a `SIGIL_POLICY_VIOLATION` error)._
+# Sign this file using the Sigil ASSURANCE.md Drafter at sigilcore.com before deploying.
+## signature
+- algorithm: Ed25519
+- policy_hash: PLACEHOLDER
+- operator_signature: PLACEHOLDER
+- operator_public_key: PLACEHOLDER
+- signed_at: PLACEHOLDER

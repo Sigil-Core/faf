@@ -243,11 +243,24 @@ https://github.com/Sigil-Core/sigil-attestations
 Standardized operating agreements
 
 /policy-templates
-Boilerplate ASSURANCE.md templates
+Sigil Lex-compatible ASSURANCE.md templates for common deployment contexts.
+See /policy-templates/README.md for format reference and usage instructions.
 
 /examples
 Example agent integration flows
 ```
+
+## ASSURANCE.md Drafter
+
+Policy files can be generated interactively using the **Sigil ASSURANCE.md Drafter** at [sigilcore.com](https://sigilcore.com).
+
+The drafter:
+- Walks through all three policy classes step by step
+- Generates an Ed25519 keypair in the browser (no server-side key handling)
+- Signs the policy hash and embeds the operator signature in the output file
+- Produces a signed `ASSURANCE.md` and a `sigil-manifest.json` bundle ready for deployment
+
+The operator signature closes the tamper gap: Sigil Lex can be configured with the operator public key to verify that the policy evaluated at runtime is the exact file the operator authorized at deploy time.
 
 ---
 
