@@ -1,45 +1,33 @@
-# SIGIL POLICY: DEFI STRATEGY EXECUTION
+## version
+1.0.0
 
-**Policy ID:** `SIGIL-POL-DEFI-001`  
-**Version:** 1.0.0  
-**Target Framework:** Sigil Open Framework / ERC-4337 Proxy
+## meta
+agent_name: "DeFiStrategyAgent"
+operator: "<OPERATOR_NAME>"
+entity: "<LEGAL_ENTITY>"
+issued: "<YYYY-MM-DDTHH:MM:SSZ>"
 
-## 1. Authorized Operations
+## class1
+- max_transaction_eth: 23.4
+- allowed_actions: [wallet.transfer, contract.call, erc4337.userop, token.approve]
+- allowed_chains: [1, 8453, 42161, 10]
+- chain_actions:
+  - "1": [wallet.transfer, contract.call, token.approve]
+  - "8453": [contract.call, token.approve]
+  - "42161": [contract.call, token.approve]
+  - "10": [contract.call, token.approve]
 
-The autonomous agent is strictly limited to the following operations:
+## class2
+- daily_limit_eth: 109.4
 
-- **Swap:** Spot token swaps on approved DEX routers.
-- **LP Management:** Add/remove liquidity only for allowlisted pools.
-- **Staking/Unstaking:** Deposit or withdraw on approved staking contracts.
-- **Rebalancing:** Move treasury allocations among allowlisted assets.
+## class3
+- consensus_threshold_eth: 12.5
+- require_hold: false
 
-## 2. Hard Constraints (The Brakes)
-
-If a generated UserOperation violates ANY of the following constraints, the Sigil Proxy MUST reject the transaction and drop the Intent Attestation.
-
-- **Maximum Transaction Value:** $75,000 USD equivalent.
-- **Maximum Daily Velocity:** $350,000 USD equivalent rolling 24-hour limit.
-- **Maximum Slippage:** 1.50% per swap.
-- **Maximum Position Concentration:** 35% of treasury value in any single protocol.
-- **Gas Limit Ceiling:** Transaction must not exceed 700,000 gwei in execution costs.
-
-## 3. Approved Assets
-
-- `USDC`
-- `USDT`
-- `DAI`
-- `WETH`
-- `WBTC`
-
-## 4. Whitelisted Contract Addresses
-
-- `Uniswap V3 Router`: `0xE592427A0AEce92De3Edee1F18E0157C05861564`
-- `USDC`: `0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48`
-- `WETH`: `0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`
-
-_(Transactions interacting with any contract outside this list will trigger a `SIGIL_POLICY_VIOLATION` error.)_
-
-## 5. Emergency Override
-
-- **Pause Condition:** If portfolio drawdown exceeds 12% in rolling 24 hours, all new risk-increasing positions are blocked.
-- **Human Approval Trigger:** Any transaction above $40,000 USD equivalent requires human co-sign approval.
+# Sign this file using the Sigil ASSURANCE.md Drafter at sigilcore.com before deploying.
+## signature
+- algorithm: Ed25519
+- policy_hash: PLACEHOLDER
+- operator_signature: PLACEHOLDER
+- operator_public_key: PLACEHOLDER
+- signed_at: PLACEHOLDER
