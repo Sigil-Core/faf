@@ -271,10 +271,11 @@ The operator signature closes the tamper gap: Sigil Lex can be configured with t
 
 FAF integrates with the broader Sigil architecture:
 
-- **Sigil Sign** - deterministic execution firewall; hosts Sigil Lex (the ASSURANCE.md parser), the RPC/bundler gateway, and Class 3 hold state
+- **OEE (Open Execution Engine)** - the enforcement substrate FAF is designed to operate alongside. OEE provides the technical enforcement primitives (Sigil Lex, Intent Attestation issuance, consensus hold management, gated RPC/bundler execution); FAF provides the legal governance layer that makes those guarantees fiduciarily meaningful.
+- **Sigil Sign** - the production implementation of OEE's enforcement primitives; hosts Sigil Lex, the RPC/bundler gateway, and Class 3 hold state
 - **sigil-attestations** - canonical Intent Attestation specification (Ed25519 JWT standard)
 - **sigil-vault** - JIT capability broker; releases execution credentials only after a valid Intent Attestation is presented
-- **OVE (Open Venture Engine)** - provides a practical implementation of FAF in an autonomous venture deployment context. Developers building with OVE inherit the governance guarantees defined in FAF.
+- **OVE (Open Venture Engine)** - the first vertical boilerplate built on OEE + FAF, pre-configured for autonomous venture capital deployment. Developers building with OVE inherit both the enforcement guarantees of OEE and the governance structure defined in FAF.
 
 ---
 
