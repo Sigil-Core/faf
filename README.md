@@ -47,17 +47,9 @@ FAF closes this liability gap by making compliance a property of **system archit
 
 ## The Doctrine of Structural Trust
 
-Safety is not a property of prompts.
-Safety is a property of architecture.
+> Safety is not a property of prompts. Safety is a property of architecture.
 
-Under FAF:
-
-- AI agents **never hold private keys**
-- AI agents **never see raw API credentials**
-- AI agents **cannot execute without deterministic authorization**
-- High-stakes actions must route through a policy enforcement layer
-
-Execution only proceeds if the action carries a valid **Intent Attestation**.
+FAF is the legal implementation of the [Sigil Open Framework's Doctrine of Structural Trust](https://github.com/Sigil-Core/sigil-open-framework). The doctrine applies at the framework level. FAF implements it in the legal domain — translating structural trust guarantees into fiduciary instruments, entity wrappers, and machine-readable policy.
 
 ---
 
