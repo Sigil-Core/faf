@@ -88,28 +88,30 @@ Sigil Lex enforces three policy classes:
 
 **Class 3 — Consensus gates (returns PENDING, not DENIED):**
 - `consensus_threshold_eth` — ETH threshold above which a hold is created
-- `require_hold` — forces a hold regardless of amount
+- `consensus_require_hold` — forces a hold regardless of amount
 
 Example:
 
 ```markdown
-## version
-1.0.0
+version: 1.0.0
 
-## class1
-- max_transaction_eth: 5.0
-- allowed_actions: [wallet.transfer, contract.call]
-- allowed_chains: [1, 8453, 42161]
-- chain_actions:
-  - "8453": [wallet.transfer]
-  - "1": [wallet.transfer, contract.call]
+## Class 1: Hard Rules
+max_transaction_eth: 5.0
+allowed_actions: wallet.transfer, contract.call
+allowed_chains: 1, 8453, 42161
+chain_actions:
+  "8453": wallet.transfer
+  "1": wallet.transfer, contract.call
 
-## class2
-- daily_limit_eth: 20.0
+## Class 2: Soft Rules
+daily_limit_eth: 20.0
 
-## class3
-- consensus_threshold_eth: 10.0
-- require_hold: true
+## Class 3: Consensus Rules
+consensus_threshold_eth: 10.0
+consensus_require_hold: false
+
+## signature
+sigil-sig: <base64url-ed25519-signature>
 ```
 
 This file becomes the enforceable contract between the agent and the execution layer. The `version` field follows semver and is required. Unknown fields are rejected at parse time.
