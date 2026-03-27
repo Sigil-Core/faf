@@ -16,7 +16,7 @@ The **Fiduciary Agent Framework (FAF)** is an open-source governance standard th
 FAF converts stochastic AI behavior into structurally bounded fiduciary execution through:
 
 - Legal entity wrapping
-- Deterministic policy enforcement (`ASSURANCE.md`)
+- Deterministic policy enforcement (`warranty.md`)
 - Cryptographically signed **Intent Attestations**
 - Credential sequestration
 
@@ -71,9 +71,9 @@ This document establishes the fiduciary boundaries for the agent.
 
 ---
 
-### 2. The `ASSURANCE.md` Policy Layer
+### 2. The Sigil Warrant Policy Layer
 
-Legal constraints are translated into deterministic, machine-readable rules in `ASSURANCE.md`, parsed at runtime by **Sigil Lex** — the policy evaluation engine built into sigil-sign.
+Legal constraints are translated into deterministic, machine-readable rules in `warranty.md`, parsed at runtime by **Sigil Lex** — the policy evaluation engine built into sigil-sign.
 
 Sigil Lex enforces three policy classes:
 
@@ -137,7 +137,7 @@ Direct execution is structurally blocked.
 
 ### 4. Intent Attestation (Cryptographic Enforcement)
 
-If the proposed action complies with `ASSURANCE.md`, the enforcement layer returns a short-lived **Intent Attestation** (JWT).
+If the proposed action complies with `warranty.md`, the enforcement layer returns a short-lived **Intent Attestation** (JWT).
 
 The attestation:
 
@@ -145,7 +145,7 @@ The attestation:
 - binds to a specific `txCommit` (EOA) or `userOpHash` (ERC-4337)
 - is cryptographically signed using Ed25519
 - expires in ≤ 60 seconds
-- includes a `policyHash` claim — SHA-256 of the ASSURANCE.md evaluated at issuance — creating a cryptographically verifiable audit link between the authorization decision and the policy version that made it
+- includes a `policyHash` claim — SHA-256 of the warranty.md evaluated at issuance — creating a cryptographically verifiable audit link between the authorization decision and the policy version that made it
 
 There are three possible outcomes:
 
@@ -211,7 +211,7 @@ FAF assumes language models are probabilistic and potentially adversarially infl
 | Threat Vector           | Risk                                          | Mitigation via FAF Architecture               |
 | ----------------------- | --------------------------------------------- | --------------------------------------------- |
 | Prompt Injection        | Agent executes unintended or malicious action | Deterministic pre-execution authorization     |
-| Treasury Drain          | Excess capital deployment beyond mandate      | `ASSURANCE.md` enforced spend limits          |
+| Treasury Drain          | Excess capital deployment beyond mandate      | `warranty.md` enforced spend limits           |
 | Privilege Escalation    | Agent exceeds defined authority               | Deny-by-default enforcement                   |
 | Secret Exfiltration     | API keys or private keys exposed              | Credential sequestration                      |
 | Infrastructure Mutation | Unauthorized infra changes                    | Mandatory interception of high-stakes actions |
@@ -237,22 +237,22 @@ https://github.com/Sigil-Core/sigil-attestations
 Standardized operating agreements
 
 /policy-templates
-Sigil Lex-compatible ASSURANCE.md templates for common deployment contexts.
+Sigil Lex-compatible warranty.md templates for common deployment contexts.
 See /policy-templates/README.md for format reference and usage instructions.
 
 /examples
 Example agent integration flows
 ```
 
-## ASSURANCE.md Drafter
+## Sigil Warrant
 
-Policy files can be generated interactively using the **Sigil ASSURANCE.md Drafter** at [sigilcore.com](https://sigilcore.com).
+Policy files can be generated interactively using **Sigil Warrant** at [sigilcore.com](https://sigilcore.com).
 
 The drafter:
 - Walks through all three policy classes step by step
 - Generates an Ed25519 keypair in the browser (no server-side key handling)
 - Signs the policy hash and embeds the operator signature in the output file
-- Produces a signed `ASSURANCE.md` and a `sigil-manifest.json` bundle ready for deployment
+- Produces a signed `warranty.md` and a `sigil-manifest.json` bundle ready for deployment
 
 The operator signature closes the tamper gap: Sigil Lex can be configured with the operator public key to verify that the policy evaluated at runtime is the exact file the operator authorized at deploy time.
 
