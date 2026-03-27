@@ -75,46 +75,52 @@ This document establishes the fiduciary boundaries for the agent.
 
 Legal constraints are translated into deterministic, machine-readable rules in `warranty.md`, parsed at runtime by **Sigil Lex** — the policy evaluation engine built into sigil-sign.
 
-Sigil Lex enforces three policy classes:
+warranty.md uses typed section blocks. At least one of `## evm`, `## tool_calls`, or `## custom` is required. Unknown fields are rejected at parse time.
 
-**Class 1 — Hard limits (immediate DENIED on violation):**
-- `max_transaction_eth` — maximum ETH value per transaction
+**`## evm` — EVM transaction enforcement:**
+- `max_transaction_eth` — maximum ETH value per transaction (hard limit; violations return `DENIED`)
 - `allowed_actions` — global action allowlist
 - `allowed_chains` — permitted chain IDs
 - `chain_actions` — optional per-chain action overrides (takes precedence over `allowed_actions` for the specified chain)
+- `consensus_threshold_eth` — ETH threshold above which a consensus hold is created (returns `PENDING`)
+- `consensus_require_hold` — forces a consensus hold regardless of amount
 
-**Class 2 — Soft limits (evaluation-enforced):**
-- `daily_limit_eth` — daily aggregate ETH cap
+**`## tool_calls` — Agent tool call governance:**
+- `allowed` — comma-separated allowlist of tool names
+- Per-tool blocklists: `bash.blocked_commands`, `web_fetch.blocked_domains`, `file_write.blocked_paths`
+- `email.require_approval` — routes email actions through consensus hold
 
-**Class 3 — Consensus gates (returns PENDING, not DENIED):**
-- `consensus_threshold_eth` — ETH threshold above which a hold is created
-- `consensus_require_hold` — forces a hold regardless of amount
+**`## custom` — Operator-defined deny rules:**
+- `deny_if.<field> <operator> <value>` — deny on metadata field match
+- `deny_string` — deny if request contains this string
+
+**`## soft_limits` — Aggregate daily caps (evaluation-only, never a hard denial):**
+- `daily_evm_limit_eth` — daily aggregate ETH cap
+- `daily_tool_calls` — daily aggregate tool call cap
 
 Example:
 
 ```markdown
 version: 1.0.0
 
-## Class 1: Hard Rules
+## evm
 max_transaction_eth: 5.0
 allowed_actions: wallet.transfer, contract.call
 allowed_chains: 1, 8453, 42161
 chain_actions:
   "8453": wallet.transfer
   "1": wallet.transfer, contract.call
-
-## Class 2: Soft Rules
-daily_limit_eth: 20.0
-
-## Class 3: Consensus Rules
 consensus_threshold_eth: 10.0
 consensus_require_hold: false
+
+## soft_limits
+daily_evm_limit_eth: 20.0
 
 ## signature
 sigil-sig: <base64url-ed25519-signature>
 ```
 
-This file becomes the enforceable contract between the agent and the execution layer. The `version` field follows semver and is required. Unknown fields are rejected at parse time.
+This file becomes the enforceable contract between the agent and the execution layer. The `version` field follows semver and is required.
 
 ---
 
@@ -149,7 +155,7 @@ The attestation:
 
 There are three possible outcomes:
 
-**Class 1/2 violation (DENIED):**
+**EVM/tool_calls/custom violation (DENIED):**
 ```json
 {
   "status": "DENIED",
@@ -159,18 +165,18 @@ There are three possible outcomes:
 }
 ```
 
-**Class 3 consensus gate (PENDING — no JWT issued):**
+**Consensus gate (PENDING — no JWT issued):**
 ```json
 {
   "status": "PENDING",
   "holdId": "<uuid-v4>",
-  "message": "Intent requires Class 3 consensus. Hold created.",
+  "message": "Intent requires Consensus. Hold created.",
   "expiresAt": 1741996800,
   "policyRule": "consensus_threshold_eth"
 }
 ```
 
-Class 3 holds are stored with a 24-hour TTL and must be resolved through Sigil Command before execution is permitted. This is the structural enforcement of the "require human approval" clause — implemented as a durable hold rather than a binary denial.
+Consensus holds are stored with a 24-hour TTL and must be resolved through Sigil Command before execution is permitted. This is the structural enforcement of the "require human approval" clause — implemented as a durable hold rather than a binary denial.
 
 This guarantees compliance **before execution**, not after capital moves.
 
@@ -274,7 +280,7 @@ The operator signature closes the tamper gap: Sigil Lex can be configured with t
 FAF integrates with the broader Sigil architecture:
 
 - **OEE (Open Execution Engine)** - the enforcement substrate FAF is designed to operate alongside. OEE provides the technical enforcement primitives (Sigil Lex, Intent Attestation issuance, consensus hold management, gated RPC/bundler execution); FAF provides the legal governance layer that makes those guarantees fiduciarily meaningful.
-- **Sigil Sign** - the production implementation of OEE's enforcement primitives; hosts Sigil Lex, the RPC/bundler gateway, and Class 3 hold state
+- **Sigil Sign** - the production implementation of OEE's enforcement primitives; hosts Sigil Lex, the RPC/bundler gateway, and Consensus hold state
 - **sigil-attestations** - canonical Intent Attestation specification (Ed25519 JWT standard)
 - **sigil-vault** - JIT capability broker; releases execution credentials only after a valid Intent Attestation is presented
 - **OVE (Open Venture Engine)** - the first vertical boilerplate built on OEE + FAF, pre-configured for autonomous venture capital deployment. Developers building with OVE inherit both the enforcement guarantees of OEE and the governance structure defined in FAF.
