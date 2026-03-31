@@ -151,7 +151,7 @@ The attestation:
 - binds to a specific `txCommit` (EOA) or `userOpHash` (ERC-4337)
 - is cryptographically signed using Ed25519
 - expires in ≤ 60 seconds
-- includes a `policyHash` claim — SHA-256 of the warranty.md evaluated at issuance — creating a cryptographically verifiable audit link between the authorization decision and the policy version that made it
+- includes a `policyHash` claim — SHA-256 of the canonical JSON serialization of the evaluated warranty policy — creating a cryptographically verifiable audit link between the authorization decision and the policy version that made it
 
 There are three possible outcomes:
 
