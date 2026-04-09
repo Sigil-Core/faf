@@ -72,7 +72,7 @@ async function main(): Promise<void> {
     app: "sigil-agent-framework",
   };
 
-  // 2) Sigil validates the vote payload against governance assurance policy.
+  // 2) Sigil validates the vote payload against governance warranty policy.
   const attestationJwt = await generateIntentAttestation({
     payload: votePayload,
     policyId: POLICY_ID,
@@ -81,7 +81,7 @@ async function main(): Promise<void> {
 
   if (!attestationJwt) {
     throw new Error(
-      "SIGIL_POLICY_VIOLATION: Governance vote failed assurance policy validation.",
+      "SIGIL_POLICY_VIOLATION: Governance vote failed warranty policy validation.",
     );
   }
 

@@ -53,7 +53,7 @@ The Directors shall maintain a current register of all Restricted Operators (the
 
 The Directors shall not permit any Restricted Operator to execute transfers, swaps, staking actions, governance votes, or any other transaction involving the Foundation's Virtual Assets unless the Restricted Operator is strictly enclosed within and subject to the deterministic runtime governance of the Sigil OS execution framework (the "Runtime"). For the purposes of this Mandate, "enclosed" means that the Restricted Operator's transaction instructions are:
 
-(a) evaluated against the Foundation's operative **`ASSURANCE.md`** policy matrix (the "Mandate Policy Matrix") before execution;
+(a) evaluated against the Foundation's operative **`warranty.md`** policy matrix (the "Mandate Policy Matrix") before execution;
 
 (b) countersigned by the Sigil OS runtime parser (`Lex`) via a valid **Ed25519 Intent Attestation** (the "Attestation"); and
 
@@ -69,7 +69,7 @@ The Mandate Policy Matrix governs all Restricted Operator activity and is identi
 
 | Field | Value |
 |---|---|
-| Document title | `ASSURANCE.md` |
+| Document title | `warranty.md` |
 | Repository | `[INSERT REPO URL]` |
 | Commit hash (at time of this Mandate) | `[INSERT COMMIT HASH]` |
 | On-chain record | `[INSERT CONTRACT ADDRESS AND NETWORK]` |
