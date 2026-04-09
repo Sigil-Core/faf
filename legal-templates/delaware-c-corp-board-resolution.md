@@ -31,7 +31,7 @@ WHEREAS, the Board acknowledges its non-delegable fiduciary Duty of Care under D
 
 WHEREAS, the Board finds that probabilistic Large Language Models and other stochastic AI systems, if granted unilateral execution authority over corporate assets without deterministic constraints, present a material, un-underwritable risk of stochastic drift, unauthorized transfers, and governance failures that would implicate the Board's Duty of Care;
 
-WHEREAS, the Board has reviewed the Corporation's operative **`ASSURANCE.md`** file (the "Policy Matrix"), which specifies the hard constraints, whitelisted counterparties, monetary velocity limits, and escalation procedures within which Agents are authorized to act;
+WHEREAS, the Board has reviewed the Corporation's operative **`warranty.md`** file (the "Policy Matrix"), which specifies the hard constraints, whitelisted counterparties, monetary velocity limits, and escalation procedures within which Agents are authorized to act;
 
 WHEREAS, the Board has determined that deploying Agents exclusively through the Corporation's designated **Execution Policy Firewall** (Sigil OS) and requiring a cryptographically valid **Ed25519 Intent Attestation** for every Agent-initiated transaction provides the affirmative monitoring mechanism required by *Caremark* and its progeny;
 
@@ -89,7 +89,7 @@ This condition precedent applies to all Agent-initiated actions involving:
 
 | Field | Value |
 |---|---|
-| Document title | `ASSURANCE.md` |
+| Document title | `warranty.md` |
 | Repository | `[INSERT REPO URL]` |
 | Commit hash (at time of this Consent) | `[INSERT COMMIT HASH]` |
 | On-chain record (if applicable) | `[INSERT ADDRESS AND NETWORK]` |

@@ -76,7 +76,7 @@ async function main(): Promise<void> {
 
   if (!attestationJwt) {
     throw new Error(
-      "SIGIL_POLICY_VIOLATION: Action failed DEFI assurance policy validation.",
+      "SIGIL_POLICY_VIOLATION: Action failed DEFI warranty policy validation.",
     );
   }
 

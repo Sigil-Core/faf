@@ -27,7 +27,7 @@ WHEREAS, [COMPANY NAME] (the "Company") holds digital assets classified under Wy
 
 WHEREAS, the Company operates Sigil OS, an autonomous agent management system, and utilizes the Sigil OS runtime parser (`Lex`) as the deterministic governance layer for all autonomous agent activity;
 
-WHEREAS, the Board has reviewed the Company's operative `ASSURANCE.md` file (the "Policy Matrix"), which specifies the hard constraints, whitelisted addresses, velocity limits, and operational boundaries within which `Lex` will countersign agent actions;
+WHEREAS, the Board has reviewed the Company's operative `warranty.md` file (the "Policy Matrix"), which specifies the hard constraints, whitelisted addresses, velocity limits, and operational boundaries within which `Lex` will countersign agent actions;
 
 WHEREAS, the Board finds that authorizing a `Lex`-governed autonomous agent to transfer Digital Assets within the bounds of the Policy Matrix is commercially reasonable under W.S. 34.1-9-102 and consistent with the Company's fiduciary obligations;
 
@@ -61,7 +61,7 @@ NOW, THEREFORE, BE IT RESOLVED as follows:
 
 | Field | Value |
 |---|---|
-| Document title | `ASSURANCE.md` |
+| Document title | `warranty.md` |
 | Repository | `[INSERT REPO URL]` |
 | Commit hash (at time of this Resolution) | `[INSERT COMMIT HASH]` |
 | On-chain record | `[INSERT CONTRACT ADDRESS AND NETWORK]` |

@@ -2,7 +2,7 @@
 1.0.0
 
 ## meta
-agent_name: "CorporateGovernanceAgent"
+agent_name: "DAOGovernanceAgent"
 operator: "<OPERATOR_NAME>"
 entity: "<LEGAL_ENTITY>"
 issued: "<YYYY-MM-DDTHH:MM:SSZ>"
@@ -22,7 +22,7 @@ issued: "<YYYY-MM-DDTHH:MM:SSZ>"
 - consensus_threshold_eth: 0.1
 - require_hold: true
 
-# Sign this file using the Sigil ASSURANCE.md Drafter at sigilcore.com before deploying.
+# Sign this file using Sigil Warrant at sigilcore.com before deploying.
 ## signature
 - algorithm: Ed25519
 - policy_hash: PLACEHOLDER
