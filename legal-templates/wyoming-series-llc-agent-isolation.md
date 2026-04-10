@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Wyoming's Series LLC statute permits a single LLC to establish legally distinct series, each with its own assets, liabilities, members, and managers. This template creates an operating agreement amendment that binds each series to a separate `ASSURANCE.md` policy matrix, ensuring that a rogue or compromised autonomous agent operating within one series cannot access the treasury or governance of any other series.
+Wyoming's Series LLC statute permits a single LLC to establish legally distinct series, each with its own assets, liabilities, members, and managers. This template creates an operating agreement amendment that binds each series to a separate `warranty.md` policy matrix, ensuring that a rogue or compromised autonomous agent operating within one series cannot access the treasury or governance of any other series.
 
 The core principle: liability isolation that Wyoming law already provides for assets is extended to the *policy layer* -- each agent operates in a hermetically sealed policy environment.
 
@@ -29,9 +29,9 @@ The Company hereby designates the following series (each, a "Designated Agent Se
 
 | Series Designation | Authorized Agent Class | Policy Matrix Path |
 |---|---|---|
-| Trading Agent Series | Autonomous trading and portfolio management agents | `series/trading/ASSURANCE.md` |
-| Marketing Agent Series | Autonomous content, outreach, and marketing agents | `series/marketing/ASSURANCE.md` |
-| [ADDITIONAL SERIES] | [AGENT CLASS DESCRIPTION] | `series/[name]/ASSURANCE.md` |
+| Trading Agent Series | Autonomous trading and portfolio management agents | `series/trading/warranty.md` |
+| Marketing Agent Series | Autonomous content, outreach, and marketing agents | `series/marketing/warranty.md` |
+| [ADDITIONAL SERIES] | [AGENT CLASS DESCRIPTION] | `series/[name]/warranty.md` |
 
 Additional Designated Agent Series may be created by amendment to this Schedule without requiring amendment to the body of this Agreement.
 
@@ -41,7 +41,7 @@ Additional Designated Agent Series may be created by amendment to this Schedule 
 
 **2.1 Separate Policy Matrix per Series**
 
-Each Designated Agent Series shall maintain a separate and independent `ASSURANCE.md` file (each, a "Series Policy Matrix") at the path specified in the Schedule above. The Series Policy Matrix is a material governance document of the applicable series and constitutes a binding constraint on all agents authorized to act on behalf of that series.
+Each Designated Agent Series shall maintain a separate and independent `warranty.md` file (each, a "Series Policy Matrix") at the path specified in the Schedule above. The Series Policy Matrix is a material governance document of the applicable series and constitutes a binding constraint on all agents authorized to act on behalf of that series.
 
 **2.2 Content Requirements**
 
@@ -132,7 +132,7 @@ These records are series-specific and shall not be commingled with the records o
 | Field | Trading Agent Series | Marketing Agent Series |
 |---|---|---|
 | Series Manager(s) | `[NAME / ADDRESS]` | `[NAME / ADDRESS]` |
-| Policy Matrix path | `series/trading/ASSURANCE.md` | `series/marketing/ASSURANCE.md` |
+| Policy Matrix path | `series/trading/warranty.md` | `series/marketing/warranty.md` |
 | On-chain registry | `[CONTRACT ADDRESS]` | `[CONTRACT ADDRESS]` |
 | Policy Matrix amendment threshold | `[e.g., unanimous Series Manager consent]` | `[e.g., majority Series Manager consent]` |
 | Asset freeze authority | Series Manager(s) | Series Manager(s) |

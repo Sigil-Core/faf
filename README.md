@@ -239,6 +239,9 @@ https://github.com/Sigil-Core/sigil-attestations
 ## Repository Structure
 
 ```text
+architecture.md
+High-level architecture overview: FAF's role as Layer 2 in the Sigil stack.
+
 /legal-templates
 Standardized operating agreements
 
