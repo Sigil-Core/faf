@@ -23,7 +23,7 @@ issued: "<YYYY-MM-DDTHH:MM:SSZ>"
 - consensus_threshold_eth: 10.0
 - require_hold: false
 
-# Sign this file using the Sigil ASSURANCE.md Drafter at sigilcore.com before deploying.
+# Sign this file using Sigil Warrant at sigilcore.com before deploying.
 ## signature
 - algorithm: Ed25519
 - policy_hash: PLACEHOLDER

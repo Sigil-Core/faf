@@ -31,9 +31,9 @@ Any action purporting to constitute a management decision of the DAO LLC -- incl
 
 Any action bearing a forged, expired, revoked, or unauthorized signature purporting to be a Lex Signature is deemed an unauthorized act under W.S. 17-31-104 and shall have no binding effect on the DAO or its Members.
 
-**[__].3 ASSURANCE.md as the Policy Matrix**
+**[__].3 warranty.md as the Policy Matrix**
 
-The `Lex` runtime shall only countersign actions that are within the deterministic bounds defined in the DAO's operative **`ASSURANCE.md`** file (the "Policy Matrix"), as amended from time to time in accordance with the governance procedures set forth in this Agreement. No Lex Signature shall be valid if the underlying action contradicts a hard constraint recorded in the Policy Matrix at the time of execution.
+The `Lex` runtime shall only countersign actions that are within the deterministic bounds defined in the DAO's operative **`warranty.md`** file (the "Policy Matrix"), as amended from time to time in accordance with the governance procedures set forth in this Agreement. No Lex Signature shall be valid if the underlying action contradicts a hard constraint recorded in the Policy Matrix at the time of execution.
 
 The Policy Matrix shall be:
 
@@ -79,7 +79,7 @@ Any Member may, at any time, request a cryptographic audit log of all Lex Signat
 
 | Field | Value |
 |---|---|
-| Canonical path | `ASSURANCE.md` at root of DAO repository |
+| Canonical path | `warranty.md` at root of DAO repository |
 | Version control | Git; commit hash recorded on-chain at each amendment |
 | Amendment procedure | Per Article [__] of this Agreement |
 
