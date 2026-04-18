@@ -1,59 +1,39 @@
-# .coderabbit.yaml — drop into each repo root
-# Adjust path_instructions per repo; this example covers both
-# agent-hooks (npm/TS) and agent-hooks-rs (Rust/crates.io) patterns.
+# .coderabbit.yaml — faf (Fiduciary Agent Framework, legal/policy templates)
 
 reviews:
-  # Auto-review every PR
   auto_review:
     enabled: true
 
   path_instructions:
-    # Rust-specific paths (agent-hooks-rs)
-    - path: "src/**/*.rs"
+    - path: "policy-templates/**/*.md"
       instructions: |
-        - Verify unsafe blocks are justified and documented.
-        - Check error handling uses thiserror or anyhow consistently.
-        - Flag any unwrap() or expect() outside of tests.
-        - Confirm public API changes are semver-appropriate.
+        FAF defines governance rules and legal parameters for agent execution.
+        Policy templates are machine-readable warranty definitions.
+        - Verify each template has clear, deterministic conditions (no ambiguous language).
+        - Check that parameter placeholders are documented.
+        - Flag any template that grants blanket permissions without constraints.
+        - Verify consistency with OEE enforcement primitives.
 
-    - path: "deny.toml"
+    - path: "legal-templates/**/*.md"
       instructions: |
-        - Verify license exceptions are scoped to exact crate+version.
-        - Flag any blanket license allows.
-        - Check advisory ignores have expiration comments or upstream references.
+        Legal templates map governance frameworks to specific jurisdictions and entity types.
+        - Check that legal language is precise and references specific statutes or frameworks.
+        - Verify templates cover the stated jurisdiction completely.
+        - Flag any template that makes unqualified legal claims.
 
-    - path: "Cargo.toml"
+    - path: "examples/**"
       instructions: |
-        - Confirm version follows semver.
-        - Check for wildcard dependency versions.
-        - Verify publish metadata (description, license, repository) is present.
+        - Verify examples use current template schemas.
+        - Check that example parameters are realistic and consistent.
 
-    # TypeScript/Node paths (agent-hooks)
-    - path: "src/**/*.ts"
+    - path: "architecture.md"
       instructions: |
-        - Check for proper error handling (no swallowed promises).
-        - Verify exported types are documented.
-        - Flag any use of 'any' type.
-
-    - path: "package.json"
-      instructions: |
-        - Confirm version follows semver.
-        - Check that publish metadata (name, version, main/exports, license) is present.
-        - Flag missing or overly broad files/exports config.
-
-    # Tests in either language
-    - path: "tests/**"
-      instructions: |
-        Ensure tests cover edge cases, not just happy paths.
-        Flag tests that assert on implementation details rather than behavior.
+        - Verify FAF architecture descriptions align with OEE and sigil-sign implementations.
+        - Flag any outdated component references.
 
     - path: "**/*.md"
       instructions: |
-        Check for accuracy against the current code.
-        Flag stale references or outdated instructions.
+        Check for internal consistency. Flag contradictions between policy and legal templates.
 
   path_filters:
-    - "!target/**"
-    - "!node_modules/**"
-    - "!dist/**"
-    - "!*.lock"
+    - "!.claude/**"
