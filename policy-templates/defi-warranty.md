@@ -1,33 +1,23 @@
-## version
-1.0.0
+# DeFi Strategy Agent — Warranty Policy
+<!-- agent: DeFiStrategyAgent -->
+<!-- Edit values to match your deployment, then sign with Sigil Warrant at sigilcore.com. -->
 
-## meta
-agent_name: "DeFiStrategyAgent"
-operator: "<OPERATOR_NAME>"
-entity: "<LEGAL_ENTITY>"
-issued: "<YYYY-MM-DDTHH:MM:SSZ>"
+version: 1.0.0
 
-## class1
-- max_transaction_eth: 23.4
-- allowed_actions: [wallet.transfer, contract.call, erc4337.userop, token.approve]
-- allowed_chains: [1, 8453, 42161, 10]
-- chain_actions:
-  - "1": [wallet.transfer, contract.call, token.approve]
-  - "8453": [contract.call, token.approve]
-  - "42161": [contract.call, token.approve]
-  - "10": [contract.call, token.approve]
+## evm
+max_transaction_eth: 23.4
+allowed_actions: wallet.transfer, contract.call, erc4337.userop, token.approve
+allowed_chains: 1, 8453, 42161, 10
+chain_actions:
+  "1": wallet.transfer, contract.call, token.approve
+  "8453": contract.call, token.approve
+  "42161": contract.call, token.approve
+  "10": contract.call, token.approve
+consensus_threshold_eth: 12.5
+consensus_require_hold: false
 
-## class2
-- daily_limit_eth: 109.4
+## soft_limits
+daily_evm_limit_eth: 109.4
 
-## class3
-- consensus_threshold_eth: 12.5
-- require_hold: false
-
-# Sign this file using Sigil Warrant at sigilcore.com before deploying.
 ## signature
-- algorithm: Ed25519
-- policy_hash: PLACEHOLDER
-- operator_signature: PLACEHOLDER
-- operator_public_key: PLACEHOLDER
-- signed_at: PLACEHOLDER
+sigil-sig: REPLACE_WITH_OUTPUT_FROM_SIGNING_TOOL
